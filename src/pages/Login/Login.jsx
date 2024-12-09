@@ -7,7 +7,8 @@ import netflix_spinner from '../../assets/netflix_spinner.gif'
 const Login = () => {
 
     const [signState, setSignState] = useState("Sign In");
-    const [name, setName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ const Login = () => {
         if (signState === "Sign In"){
             await login(email, password);
         } else {
-            await signup(name, email, password);
+            await signup(firstName, lastName, email, password);
         }
         setLoading(false);
     }
@@ -34,7 +35,10 @@ const Login = () => {
         <form>
             { // Display Name form only if on "Sign Up" page
             signState === "Sign Up" ? 
-                <input value={name} onChange={(e) => {setName(e.target.value)}} type="text" placeholder='Your name' /> 
+                <div className="name-field">
+                    <input value={firstName} onChange={(e) => {setFirstName(e.target.value)}} type="text" placeholder='First Name' />
+                    <input value={lastName} onChange={(e) => {setLastName(e.target.value)}} type="text" placeholder='Last Name' /> 
+                </div>
                 : <></>}
             <input value={email} onChange={(e) => {setEmail(e.target.value)}} type="email" placeholder='Email' />
             <input value={password} onChange={(e) => {setPassword(e.target.value)}} type="password" placeholder='Password' />

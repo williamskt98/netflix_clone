@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -16,16 +16,20 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const signup = async (name, email, password) => {
+const signup = async (firstName, lastName, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
         await addDoc(collection(db, "user"), {
             uid: user.uid,
-            name,
+            firstName,
+            lastName,
             authProvider: "local",
             email
         })
+        await updateProfile(user, {
+            displayName: firstName
+        });
     } catch (error) {
         console.log(error);
         toast.error(error.code.split('/')[1].split('-').join(" "));

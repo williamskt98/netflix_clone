@@ -85,6 +85,10 @@
 .login-spinner img{
     width: 60px;
 }
+.name-field{
+    display: flex;
+    gap: 10px;
+}
 @media (max-width: 500px) {
     .login{
         padding: 15px 5%;

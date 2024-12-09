@@ -1,15 +1,17 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.png'
 import search_icon from '../../assets/search_icon.svg'
 import bell_icon from '../../assets/bell_icon.svg'
 import profile_img from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
-import { logout } from '../../firebase'
+import { auth, logout } from '../../firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
+    // Adds Dynamic Background to Navbar on Scroll
     const navRef = useRef();
 
     useEffect(() => {
@@ -21,6 +23,17 @@ const Navbar = () => {
             }
         })
     },[])
+
+    //Fetches First Name from Firebase Auth User
+    const [firstName, setFirstName] = useState("");
+
+    useEffect(() => {
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                setFirstName(user.displayName);
+            }
+        })
+    }, []);
 
   return (
     <div ref={navRef} className='navbar'>
@@ -37,7 +50,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-right">
         <img src={search_icon} alt="" className='icons' />
-        <p>Caroline</p>
+        <p>{firstName}</p>
         <img src={bell_icon} alt="" className='icons' />
         <div className="navbar-profile">
             <img src={profile_img} alt="" className='profile' />

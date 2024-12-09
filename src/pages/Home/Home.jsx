@@ -9,10 +9,10 @@ import TitleCards from '../../components/TitleCards/TitleCards'
 import Footer from '../../components/Footer/Footer'
 
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div className='home'>
-      <Navbar/>
+      <Navbar uid={props.uid}/>
       <div className="hero">
         <img src={hero_banner} alt="" className='banner-img'/>
         <div className="hero-caption">

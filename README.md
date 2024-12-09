@@ -9,7 +9,7 @@ Currently, two official plugins are available:
 
 TODO:
 
-Login Page
+Login/Signup Page
 - First and Last Name in Registration
 - Remember Me functionality
 
