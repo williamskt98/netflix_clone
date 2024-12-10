@@ -10,12 +10,12 @@ Currently, two official plugins are available:
 TODO:
 
 Login/Signup Page
-- First and Last Name in Registration
+- DONE First and Last Name in Registration
 - Remember Me functionality
 
 Home
-- First Name displayed in Navbar
-- Navbar background fades in 
+- DONE First Name displayed in Navbar
+- DONE Navbar background fades in 
 - Title Card expands on hover
     - Animation
     - Buttons
@@ -28,4 +28,8 @@ Home
 TMDB Enhanced Features
 - Create new Account or Guest Session
 - Maintain Favorites and Watchlist
+
+Firebase DB
+- Maintain profiles for each user
+- Favorites and Watchlist tables
 
