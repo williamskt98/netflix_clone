@@ -33,3 +33,8 @@ Firebase DB
 - Maintain profiles for each user
 - Favorites and Watchlist tables
 
+
+Watchlist Endpoint
+POST netflix-clone/v1/watchlist/{movie_id}
+Add new row to table WATCHLIST
+    account_id = x, movie_id = movie_id

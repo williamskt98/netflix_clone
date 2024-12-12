@@ -17,7 +17,7 @@
     max-width: 420px;
     margin-bottom: 30px;
 }
-.hero-caption p{
+.hero-caption .description{
     max-width: 700px;
     font-size: 17px;
     margin-bottom: 20px;
