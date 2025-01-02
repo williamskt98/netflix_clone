@@ -1,14 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './TitleCards.css'
-import { Link } from 'react-router-dom'
-import { FaPlayCircle } from 'react-icons/fa'
-import { AiOutlinePlus } from 'react-icons/ai'
-import { BsBadgeHd, BsHandThumbsUp } from 'react-icons/bs'
-import { SlArrowDown } from 'react-icons/sl'
+import TitleCard from '../TitleCard/TitleCard'
 
 const TitleCards = ({title, category}) => {
 
-    const [apiData, setApiData] = useState([])
+    const [apiData, setApiData] = useState([]);
     const cardListRef = useRef();
 
     const options = {
@@ -39,30 +35,7 @@ const TitleCards = ({title, category}) => {
       <h2>{title?title:"Popular on Netflix"}</h2>
       <div className="card-list" ref={cardListRef}>
         {apiData.map((card, index) => {
-            return <div className="card">
-                <Link to={`/player/${card.id}`} key={index} className='card-link'>
-                    <img src={'https://image.tmdb.org/t/p/w500' + card.backdrop_path} alt="" />
-                    <p>{card.original_title}</p>
-                </Link>
-                <div className="expand-card">
-                    <div className="icons">
-                        <span><FaPlayCircle className='play'/></span>
-                        <span><AiOutlinePlus className='plus'/></span>
-                        <span><BsHandThumbsUp className='thumb'/></span>
-                        <span><SlArrowDown className='dropdown'/></span>
-                    </div>
-                    <div className="info">
-                        <span className="rating">R</span>
-                        <span className="runtime">2h 3m</span>
-                        <span className="hd"><BsBadgeHd /></span>
-                    </div>
-                    <ul className="tags">
-                        <li><span>Witty</span></li>
-                        <li><span>Emotional</span></li>
-                        <li><span>Action</span></li>
-                    </ul>
-                </div>
-            </div>
+            return <TitleCard card={card} key={index}/>
         })}
       </div>
     </div>

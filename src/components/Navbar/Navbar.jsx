@@ -7,6 +7,7 @@ import profile_img from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
 import { auth, logout } from '../../firebase'
 import { onAuthStateChanged } from 'firebase/auth'
+import { Link } from 'react-router-dom'
 
 
 const Navbar = (props) => {
@@ -24,13 +25,15 @@ const Navbar = (props) => {
         })
     },[])
 
-    //Fetches First Name from Firebase Auth User
+    // Fetches First Name from Firebase Auth User
     const [firstName, setFirstName] = useState("");
+    const [uid, setUid] = useState("");
 
     useEffect(() => {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setFirstName(user.displayName);
+                setUid(user.uid);
             }
         })
     }, []);
@@ -40,12 +43,13 @@ const Navbar = (props) => {
       <div className="navbar-left">
         <img src={logo} alt="" />
         <ul>
-            <li>Home</li>
+            <li><Link to={'/'} className='navbar-link'>Home</Link></li>
             <li>TV Shows</li>
             <li>Movies</li>
             <li>New & Popular</li>
-            <li>My List</li>
+            <li><Link to={`/mylist/${uid}`} className='navbar-link'>My List</Link></li>
             <li>Browse by Languages</li>
+            <li><Link to={'/test'} className='navbar-link'>Test</Link></li>
         </ul>
       </div>
       <div className="navbar-right">

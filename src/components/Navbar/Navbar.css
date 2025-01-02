@@ -26,6 +26,10 @@
 .navbar-left ul li{
     cursor: pointer;
 }
+.navbar-left .navbar-link{
+    text-decoration: none;
+    color: inherit;
+}
 .navbar-right{
     display: flex;
     gap: 20px;

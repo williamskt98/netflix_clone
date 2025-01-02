@@ -1,0 +1,20 @@
+.tags {
+    display: flex;
+    gap: 15px;
+    font-size: 10px;
+    font-weight: 250;
+    margin-top: 5px;
+}
+.tags li{
+    list-style: disc;
+}
+.tags :nth-child(1) {
+    list-style: none;
+}
+.tags li span {
+    position: relative;
+    left: -4px;
+}
+.tags li::marker {
+    color: #5f5f5f;
+}
