@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Test.css'
-import { getWatchlistData } from '../../services/watchlist';
+import { getWatchlistData } from '../../services/movies';
 import PropTypes from 'prop-types';
 
 export default function MyTest( { uid } ) {

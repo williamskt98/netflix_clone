@@ -12,13 +12,9 @@ const GenreTags = function(props) {
 
     return (
         <ul className="tags">
-            {!isLoaded ? (
-                < ></>
-            ) : (
-               genres.slice(0,3).map((genre, index) => {
+               {genres?.slice(0,3).map((genre, index) => {
                 return <li className={index}><span>{genre}</span></li>
-               }
-            ))}
+               })}
         </ul>
     )
 
